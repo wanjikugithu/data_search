@@ -1,0 +1,72 @@
+---
+title: "Precipitation"
+# runtime: shiny_prerendered
+# output: distill::distill_article
+site: distill::distill_website
+---
+```{r setup, include=TRUE, echo=FALSE}
+library(dplyr)
+# library(shiny)
+# library(reactable)
+
+df <- read.csv("datasources.csv")
+
+df <- filter(df, group == "rain") #%>%
+  # select(name, url)
+
+b <- df %>%
+  mutate(Details = paste0('<a href="', df$url, '">',"details", '</a>')) %>%
+  select(name, Details)
+
+# df %>%
+#   reactable::reactable(
+#     searchable = TRUE,
+#     columns = list(
+#       name = colDef(
+#         cell = function(value, index){
+#           url_in <- p$sourceurl[index]
+#           htmltools::a(href = url_in, value)
+#         }
+#       ),
+#       sourceurl = colDef(
+#         show = FALSE
+#       )
+#       
+#     )
+#   )
+
+```
+
+
+```{r, include=TRUE, echo=FALSE}
+# library(reactable)
+# tableOutput("table")
+DT::datatable(b, escape = F)
+
+```
+
+
+```{r, context="server"}
+# library(reactable)
+
+# output$table <- renderReactable({
+#   reactable(df,
+#              columns = list(
+#                name = colDef(
+#                  cell = function(value, index){
+#                    url_in <- df$url[index]
+#                    htmltools::a(href = url_in, value)
+#         }
+#       ),
+#       url = colDef(
+#         show = FALSE
+#       ))
+#   )
+# })
+
+# output$table <- renderTable({
+#   DT::datatable(b, escape = F)
+# })
+
+```
+

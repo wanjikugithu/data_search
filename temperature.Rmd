@@ -1,0 +1,50 @@
+---
+title: "Temperature"
+# runtime: shiny_prerendered
+# output: distill::distill_article
+site: distill::distill_website
+---
+
+```{r setup, include=TRUE, echo=FALSE}
+# library(reactable)
+library(dplyr)
+
+df <- read.csv("datasources.csv")
+
+df <- filter(df, group == "temp")
+
+b <- df %>%
+  mutate(Details = paste0('<a href="', df$url, '">',"details", '</a>')) %>%
+  select(name, Details)
+
+# df %>%
+#   reactable::reactable(
+#     searchable = TRUE,
+#     columns = list(
+#       name = colDef(
+#         cell = function(value, index){
+#           url_in <- p$sourceurl[index]
+#           htmltools::a(href = url_in, value)
+#         }
+#       ),
+#       sourceurl = colDef(
+#         show = FALSE
+#       )
+# 
+#     )
+#   )
+
+```
+
+
+```{r, include=TRUE, echo=FALSE}
+# tableOutput("table")
+DT::datatable(b, escape = F)
+
+```
+
+
+```{r, context="server", include=FALSE, echo=FALSE}
+
+```
+

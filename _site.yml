@@ -1,0 +1,35 @@
+name: "web_example"
+title: "Data View"
+description: |
+  Data sources
+output_dir: "_site"
+navbar:
+  right:
+    - text: "Home"
+      href: index.html
+    - text: "Data"
+      menu:
+        - text: "Administrative"
+          href: admin.html
+        - text: "Biodiversity"
+          href: conserve.html
+        - text: "Climate"
+          href: climate.html
+        - text: "Topography"
+          href: topo.html
+        - text: "Soils"
+          href: soils.html
+        - text: "Agriculture"
+          href: ag.html
+        - text: "Water"
+          href: water.html
+    - text: "Metadata"
+      href: metadata.html
+    - text: "About"
+      href: about.html
+  search: true
+output:
+  distill::distill_article:
+    toc: true
+   
+ 

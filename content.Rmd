@@ -1,0 +1,10 @@
+---
+title: "content"
+output: html_document
+---
+* [Climate](content/climate.Rmd)
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+

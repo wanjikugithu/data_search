@@ -1,0 +1,39 @@
+---
+title: "Soils"
+output: distill::distill_article
+---
+
+```{r setup, include=TRUE,echo=FALSE}
+library(dplyr)
+library(reactable)
+
+df <- read.csv("datasources.csv")
+
+df <- filter(df, theme == "soils") %>%
+  select(name, sourceurl)
+
+reactable(
+  df,
+  searchable = TRUE,
+  columns = list(
+    name = colDef(
+        cell = function(value, index){
+          url_in <- df$sourceurl[index]
+          htmltools::a(href = url_in, value)
+        }
+      ),
+    sourceurl = colDef(
+      show = FALSE
+    )
+  ),
+  
+)
+
+
+```
+
+
+
+
+
+

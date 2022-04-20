@@ -1,0 +1,26 @@
+---
+title: "Monthly Wind Speed"
+output: distill::distill_article
+---
+
+```{r setup, include=TRUE, echo=FALSE}
+
+library(tidyverse)
+# library(reactable)
+library(gt)
+df <- read.csv("datasources.csv")
+
+df <- filter(df, name == "Monthly Wind Speed")
+
+b <- df %>%
+  mutate(Link = paste0('<a href="', df$sourceurl, '">',"Download here", '</a>'))
+
+b <- t(b)
+DT::datatable(b, escape = F, options = list(dom = 't', pageLength = 15), colnames ="")
+
+```
+
+
+
+
+

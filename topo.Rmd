@@ -1,0 +1,26 @@
+---
+title: "Topography"
+output: distill::distill_article
+---
+
+```{r setup, include=TRUE, echo=FALSE}
+library(dplyr)
+library(reactable)
+
+df <- read.csv("datasources.csv")
+
+df <- filter(df, group == "topo")
+
+b <- df %>%
+  mutate(Details = paste0('<a href="', df$url, '">',"details", '</a>')) %>%
+  select(name, Details)
+
+DT::datatable(b, escape = F, options = list(dom='t'))
+
+```
+
+
+
+
+
+

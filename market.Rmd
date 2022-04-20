@@ -1,0 +1,25 @@
+---
+title: "Travel Time to Market"
+output: distill::distill_article
+---
+
+```{r setup, include=TRUE, echo=FALSE}
+
+library(tidyverse)
+
+df <- read.csv("datasources.csv")
+
+df <- filter(df, name == "Travel Time to Market")
+
+b <- df %>%
+  mutate(Link = paste0('<a href="', df$sourceurl, '">',"Link", '</a>'))
+
+b <- t(b)
+DT::datatable(b, escape = F, options = list(dom = 't', pageLength = 15), colnames ="")
+
+```
+
+
+
+
+

@@ -1,0 +1,46 @@
+---
+title: "Data View"
+description: |
+  Welcome, Please search for a dataset
+site: distill::distill_website
+---
+## Thematic areas
+
+The following shows the data available in the following thematic areas
+
+## Administrative
+
+[Administrative boundaries](admin.html)
+
+## Climate
+
+- [Precipitation](climate.html)
+
+- [Temperature](temperature.html)
+
+- [Radiation](radiation.html)
+
+- [Wind](wind.html)
+
+- [Pressure](pressure.html)
+
+
+```{r, include=TRUE, echo=FALSE}
+library(DT)
+
+# a <- filter(p, theme == "Climate") %>%
+#   select(layers)
+
+# DT::datatable(a)
+
+```
+
+## [Soils](soils.html)
+
+## [Biodiversity](conserve.html)
+
+## [Topography](topo.html)
+
+## Human data
+- [Population Density](population.html)
+- [Travel Time to Market](market.html)

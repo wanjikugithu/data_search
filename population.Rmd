@@ -1,0 +1,30 @@
+---
+title: "Population Density"
+output: distill::distill_article
+---
+
+```{r setup, include=TRUE, echo=FALSE}
+
+library(tidyverse)
+# library(reactable)
+
+df <- read.csv("datasources.csv")
+
+df <- filter(df, name == "Population Density")
+
+b <- df %>%
+  mutate(Link = paste0('<a href="', df$sourceurl, '">',"Link", '</a>'))
+
+# b <- b[-c(1:9)]
+b <- t(b)
+DT::datatable(b, escape = F, options = list(dom = 't', pageLength = 15), colnames ="")
+
+```
+
+
+
+
+
+
+
+

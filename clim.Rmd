@@ -1,0 +1,16 @@
+---
+title: "clim"
+# output: html_document
+runtime: shiny
+---
+
+```{r setup, include=TRUE, echo=FALSE}
+library(dplyr)
+
+p <- read.csv("datasources.csv")
+
+df <- filter(p, theme == "climate") %>%
+  select(name, url)
+
+```
+

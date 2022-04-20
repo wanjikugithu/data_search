@@ -1,0 +1,43 @@
+---
+title: "Data"
+description: |
+output: distill::distill_article
+# runtime: shiny_prerendered
+---
+
+```{r setup, include=TRUE, echo=FALSE}
+library(reactable)
+library(dplyr)
+
+p <- read.csv("datasources.csv")
+
+df <- filter(p, theme == "admin") %>%
+  select(name, url)
+
+df %>%
+  reactable::reactable(
+    searchable = TRUE,
+    columns = list(
+      name = colDef(
+        cell = function(value, index){
+          url_in <- p$url[index]
+          htmltools::a(href = url_in, value)
+        }
+      ),
+      url = colDef(
+        show = FALSE
+      )
+    
+    )
+  )
+
+```
+
+
+
+
+
+
+
+
+
